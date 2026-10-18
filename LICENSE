@@ -1,0 +1,47 @@
+MIT License
+
+Copyright (c) 2026 Rafael
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Avisos. Esta parte não altera o texto da MIT acima. Diz o que essa licença
+não alcança. A tabela de origem, arquivo e licença de cada peça está no README.
+
+A MIT cobre o código original deste firmware. Arquivos que já trazem outra
+licença continuam nela: `components/board_p4` é MIT (ultramcu),
+`components/esp_lcd_touch_gt911` é Apache 2.0 (Espressif) e `main/gfx/jpgd` é
+o jpgd de Rich Geldreich, domínio público ou Apache 2.0, à escolha de quem
+reutiliza aquele diretório.
+
+Os blobs em `main/gfx/logos` são logotipos das companhias aéreas, usados só
+para ilustrar a tela. As marcas continuam dos respectivos donos. A MIT não
+autoriza o uso dessas marcas.
+
+As imagens em `telas/` são capturas do aparelho em funcionamento, para mostrar
+como o software se comporta. Quando uma captura inclui foto de aeronave, essa
+foto veio na hora da API (planespotters, ou a miniatura do airport-data quando
+o planespotters não tem a aeronave). O direito autoral da foto permanece com o
+autor. A captura não foi editada para removê-la.
+
+As polilinhas de Tietê e Pinheiros em `main/geo/rivers.c` são um extrato do
+OpenStreetMap e permanecem sob a Open Database License (ODbL). © colaboradores
+do OpenStreetMap. O restante deste repositório não passa a ser ODbL por causa
+desse extrato.

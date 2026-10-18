@@ -1,0 +1,14 @@
+# Gerado pelo ESP-IDF. Nao versionar.
+build/
+sdkconfig
+sdkconfig.old
+managed_components/
+
+# Instrucoes locais da placa e do agente. Nao publicas.
+.cursor/
+
+# Editor e caches
+.vscode/
+.cache/
+__pycache__/
+*.pyc

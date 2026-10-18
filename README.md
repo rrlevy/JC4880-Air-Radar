@@ -14,6 +14,40 @@ O centro, o alcance, a proa, o tema, os filtros e as redes Wi-Fi ficam na NVS da
 
 Os pontos cardeais N, E, S e W ficam fora do anel e acompanham o norte verdadeiro. A cor dos rios é fixa e não segue o tema.
 
+## Telas
+
+Capturas da placa, em `telas/`. Não entram no binário. O comando que grava o conjunto está na seção [Serial](#serial). Quando o cartão traz a foto de uma aeronave, o direito continua do fotógrafo; o detalhe está em [Licença](#licença).
+
+### Radar
+
+| 15 NM, aeronave selecionada | Alcance máximo, 250 NM |
+| --- | --- |
+| ![Radar a 15 NM, tema Genérico, GOL 1206 selecionado](telas/radar.png) | ![Radar a 250 NM, mesmo voo](telas/radar-250nm.png) |
+
+### Temas
+
+| Gol | LATAM |
+| --- | --- |
+| ![Tema Gol, 30 NM](telas/radar-tema-gol.png) | ![Tema LATAM, 30 NM](telas/radar-tema-latam.png) |
+
+| Azul | Genérico |
+| --- | --- |
+| ![Tema Azul, 30 NM](telas/radar-tema-azul.png) | ![Tema Genérico, 30 NM](telas/radar-tema-generico.png) |
+
+### Configuração
+
+| Wi-Fi | Coordenadas |
+| --- | --- |
+| ![Menu Wi-Fi](telas/config-wifi.png) | ![Latitude, longitude, proa, mapa e rios](telas/config-coordenadas.png) |
+
+| Filtros | Geral |
+| --- | --- |
+| ![Filtros de companhia e tipo](telas/config-filtros.png) | ![Período da varredura e título](telas/config-geral.png) |
+
+| Tema | |
+| --- | --- |
+| ![Escolha do tema: Gol, LATAM, Azul e Genérico](telas/config-tema.png) | |
+
 ## O que este firmware não usa
 
 Câmera, cartão SD, RS-485 e alto-falante estão na placa e ficam desligados. Os dois botões da direita não são GPIOs: um reinicia o chip e o outro é a tecla de energia. O botão da esquerda é o BOOT (GPIO35) e, se estiver preso no reset, entra no modo de gravação. Ele não abre a configuração.
@@ -74,6 +108,18 @@ O mapa de cada arquivo está em [docs/ESTRUTURA.md](docs/ESTRUTURA.md). Em uma l
 | `components/board_p4` | tela, toque e pinos da placa |
 | `telas` | capturas da interface, não entram no binário |
 
+## APIs
+
+Com Wi-Fi, o firmware consulta estes serviços. A resposta não entra no repositório. Vale o termo de cada um no momento da chamada.
+
+| Serviço | Para quê | Endereço |
+| --- | --- | --- |
+| adsb.fi | Aviões em volta do centro. A API recusa distância acima de 250 NM, que é o alcance máximo. | `https://opendata.adsb.fi/api/v2/lat/{lat}/lon/{lon}/dist/{nm}` |
+| ADS-B DB | Rota pelo número do voo, e o operador pela matrícula. | `https://api.adsbdb.com/v0/callsign/{voo}` e `https://api.adsbdb.com/v0/aircraft/{matrícula}` |
+| planespotters.net | Foto da aeronave, primeiro pelo endereço hexadecimal, depois pela matrícula. | `https://api.planespotters.net/pub/photos/hex/{hex}` e `https://api.planespotters.net/pub/photos/reg/{matrícula}` |
+| airport-data.com | Miniatura, quando o planespotters não tem foto. | `https://airport-data.com/api/ac_thumb.json` |
+| NTP | Hora local e Zulu. | `a.ntp.br`, `b.ntp.br`, `pool.ntp.org` |
+
 ## Licença
 
 O código original está sob a [licença MIT](LICENSE). É a mais permissiva que convive com as peças redistribuídas aqui: o suporte da placa já é MIT, o driver de toque da Espressif permanece Apache 2.0, e o extrato do OpenStreetMap permanece na ODbL. A MIT não substitui essas licenças.
@@ -101,4 +147,4 @@ Os PNG em `telas/` mostram o software funcionando. Quando a captura inclui a fot
 | Logotipos | `main/gfx/logos` | As companhias | Marca de terceiro. Só ilustração da tela |
 | Foto no cartão e nas capturas | não fica no código; a API responde em tempo de execução | [planespotters](https://www.planespotters.net/photo/api); miniatura do airport-data se não houver foto lá | Direito do fotógrafo |
 
-Em execução o firmware também consulta `opendata.adsb.fi` (aviões), `api.adsbdb.com` (rota) e um servidor NTP (hora). A resposta não entra no repositório. Vale o termo de cada serviço no momento da chamada.
+As chamadas em execução estão na seção [APIs](#apis).
